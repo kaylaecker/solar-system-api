@@ -22,7 +22,7 @@ def handle_planets():
         request_body = request.get_json()
         new_planet = Planet(name=request_body["name"],
                         description=request_body["description"],
-                        position_from_sun=request_body["position_from_sun"])
+                        position_from_sun=request_body["position"])
 
         db.session.add(new_planet)
         db.session.commit()
