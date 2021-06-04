@@ -30,8 +30,13 @@ def handle_planets():
         return make_response(f"Planet {new_planet.name} successfully created", 201)
 
 
+@planets_bp.route("/planets/<planet_id>", methods=["GET"])
+def handle_planet(planet_id):
+    planet = Planet.query.get(planet_id)
 
-# Create the following endpoints, with similar functionality presented in the Hello Books API:
-# As a client, I want to send a request with new valid planet data and get a success response, so that I know the API saved the planet data
-# As a client, I want to send a request to get all existing planets, so that I can see a list of planets, with their id, name, description, and other data of the planet.
-# As a client, I want to send a request to get one existing planet, so that I can see the id, name, description, and other data of the planet.
+    return {
+        "id": planet.id,
+        "name": planet.name,
+        "description": planet.description,
+        "position": planet.position_from_sun
+    }
