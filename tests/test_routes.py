@@ -7,22 +7,17 @@ def test_get_all_planets_with_no_records(client):
     assert response.status_code == 200
     assert response_body == []
 
-def test_get_all_books_with_records(client, two_saved_books):
+def test_get_specific_planet_that_exists(client, two_saved_planets):
     # Act
-    response = client.get("/books")
+    response = client.get("/solar_system/planets/1")
     response_body = response.get_json()
 
     # Assert
     assert response.status_code == 200
-    assert response_body == [
-        {
+    assert response_body == {
         "id": 1,
-        "title": "Ocean Book",
-        "description": "watr 4evr"
-        },
-        {
-        "id": 2,
-        "title": "Mountain Book",
-        "description": "i luv 2 climb rocks"
-        } 
-    ]   
+        "name": "pluto",
+        "description": "Neil sucks",
+        "position" : 9
+    }
+    
