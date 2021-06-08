@@ -21,7 +21,7 @@ def client(app):
 @pytest.fixture
 def two_saved_planets(app):
     # Arrange
-    pluto = Planet(name="pluto",
+    pluto = Planet(name="Pluto",
                     description="Neil sucks",
                     position_from_sun = 9)
     venus = Planet(name="Venus",
