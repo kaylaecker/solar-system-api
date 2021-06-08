@@ -13,7 +13,7 @@ def create_app(test_config=False):
 
     from .routes import planets_bp
     app.register_blueprint(planets_bp)
- 
+
     if not test_config:
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
         app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
